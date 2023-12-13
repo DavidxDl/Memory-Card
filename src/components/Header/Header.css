@@ -1,0 +1,17 @@
+header {
+  display: flex;
+  background-color: yellow;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px
+}
+header h1 {
+  color: white;
+  text-shadow: 1px -1px 3px blue;
+  font-size: 35px
+}
+
+header img {
+  width: 40px
+  
+}
