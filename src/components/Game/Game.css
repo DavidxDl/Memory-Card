@@ -87,11 +87,11 @@
 }
 
 
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 500px) {
   .card div {
     padding: 0;
   }
   .card img {
-    width:160px;
+    width:130px;
   }
 }
