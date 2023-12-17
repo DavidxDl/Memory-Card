@@ -39,11 +39,23 @@
 
 @keyframes rotate {
    0% {
-  transform: rotate(0deg) scale(1.1);
-  
-} 
+      transform: rotate(0deg) scale(1.1);
+      } 
+
    100% {
-  transform: rotate(360deg) scale(1.1)
+      transform: rotate(360deg) scale(1.1)
+      }
+}
+
+@keyframes shake {
+  0% {
+  transform: translateX(0)
+}
+  50% {
+  transform: translateX(50px);
+}
+  100% {
+  transform: translateX(-50px);
 }
 }
 
@@ -54,6 +66,16 @@
   align-items:center;
   justify-content:center;
   background-color: yellow;
+  box-shadow: 3px 3px 8px  black;
+  cursor: pointer;
+  transition: transform .2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-20px);
+  box-shadow: 7px 7px 8px  blue;
+}
+.card:active {
+  background-color: lightblue;
 }
 
 .card div {
@@ -62,5 +84,4 @@
 
 .card img {
   width: 200px;
-  background-color:black;
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import "./Game.css"
 import PokemonCard from "../PokemonCard";
+import PokeSpinner from "../PokeSpinner/PokeSpinner";
 
 interface pokemon {
   name: string;
@@ -14,11 +15,14 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function getPokemon() {
+      setIsLoading(true);
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=10&offset=${Math.floor(Math.random() * 100)}`);
       const data = await response.json();
+      setIsLoading(false);
       setPokemons(data.results);
     }
     getPokemon();
@@ -61,12 +65,14 @@ export default function Game() {
     <>
       <h2 style={{ textAlign: "center", color: "blue" }}>{`Score: ${score}`}</h2>
       <div className="game">
-        {pokemons.map(pokemon => <PokemonCard
-          key={crypto.randomUUID()}
-          name={pokemon.name}
-          imgURL={pokemon.url}
-          onClick={handleCardClick}
-        />)}
+        {isLoading
+          ? <PokeSpinner size="300px" />
+          : pokemons.map(pokemon => <PokemonCard
+            key={crypto.randomUUID()}
+            name={pokemon.name}
+            imgURL={pokemon.url}
+            onClick={handleCardClick}
+          />)}
 
       </div>
     </>
