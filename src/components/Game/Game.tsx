@@ -52,8 +52,8 @@ export default function Game() {
   if (!hasStarted) {
     return (
       <>
-        <h2 style={{ textAlign: "center", color: "blue" }}>{gameOver && `Your Score Was: ${score}`}</h2>
-        <h3 style={{ textAlign: "center", color: "blue" }}>{`highscore: ${highscore}`}</h3>
+        {gameOver && <h2 style={{ textAlign: "center", color: "blue" }}>{`Your Score Was: ${score}`}</h2>}
+        {gameOver && <h3 style={{ textAlign: "center", color: "blue" }}>{`highscore: ${highscore}`}</h3>}
         <div className="game">
           <button className="startBtn" onClick={handleStart}>{gameOver ? "Play Again" : "Start Game"}</button>
         </div>
